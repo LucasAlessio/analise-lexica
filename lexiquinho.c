@@ -57,7 +57,7 @@ int pos = 0;
 int tk;
 char lex[20];
 FILE *arqin;
-char c; // �ltimo caracter lido do arquivo
+char c; // último caracter lido do arquivo
 
 struct pal_res {
 	char palavra[20];
@@ -102,10 +102,10 @@ int palavra_reservada(char lex[]) {
 }
 
 
-void getToken(); // prot�tipos
+void getToken(); // protótipos
 void proxC();
 
-// vari�veis globais para retrocesso
+// variáveis globais para retrocesso
 
 long int posglobal;
 int linha = 0, coluna = 0;
@@ -129,7 +129,7 @@ void proxC() {
 		coluna = 0;
 		linha++;		
 	}
-	//printf("Leu caracter %c\n",c);
+	// printf("Leu caracter %c\n",c);
 }
 
 void getToken() {
@@ -139,7 +139,7 @@ void getToken() {
 	
 	while (!fim) {
 		/* printf("%s\n",exp1);
-		printf("char=%c pos=%d\n", c, pos);*/
+		printf("char=%c pos=%d\n", c, pos); */
 		lex[posl++] = c;
 		
 		switch(estado) {
@@ -155,13 +155,13 @@ void getToken() {
 						lex[posl++] = '=';
 						lex[posl] = '\0';
 						proxC();
-						tk = TKDuploIgual; /*printf("Reconheceu token TKDuploIgual\n");*/
+						tk = TKDuploIgual; /* printf("Reconheceu token TKDuploIgual\n"); */
 						return;
 					}
 					else {
 						lex[posl] = '\0';
 						proxC();
-						tk = TKAtrib; /*printf("Reconheceu token TKAtrib\n");*/
+						tk = TKAtrib; /* printf("Reconheceu token TKAtrib\n"); */
 						return;
 					}
 				}
@@ -171,11 +171,11 @@ void getToken() {
 						lex[posl++] = '+';
 						lex[posl] = '\0';
 						proxC();
-						tk = TKDuploMais; /*printf("Reconheceu token TKDuploMais\n");*/
+						tk = TKDuploMais; /* printf("Reconheceu token TKDuploMais\n"); */
 						return;
 					} else {
 						lex[posl] = '\0';
-						tk = TKSoma; /*printf("Reconheceu token TKSoma\n");*/
+						tk = TKSoma; /* printf("Reconheceu token TKSoma\n"); */
 						return;
 					}
 				}
@@ -185,11 +185,11 @@ void getToken() {
 						lex[posl++] = '-';
 						lex[posl] = '\0';
 						proxC();
-						tk = TKDuploMenos; /*printf("Reconheceu token TKDuploMenos\n");*/
+						tk = TKDuploMenos; /* printf("Reconheceu token TKDuploMenos\n"); */
 						return;
 					} else {
 						lex[posl] = '\0';
-						tk = TKSub; /*printf("Reconheceu token TKSub\n");*/
+						tk = TKSub; /* printf("Reconheceu token TKSub\n"); */
 						return;
 					}
 				}
@@ -199,11 +199,11 @@ void getToken() {
 						lex[posl++] = '&';
 						lex[posl] = '\0';
 						proxC();
-						tk = TKAndLogico; /*printf("Reconheceu token TKDuploMais\n");*/
+						tk = TKAndLogico; /* printf("Reconheceu token TKDuploMais\n"); */
 						return;
 					} else {
 						lex[posl] = '\0';
-						tk = TKAndBit; /*printf("Reconheceu token TKSoma\n");*/
+						tk = TKAndBit; /* printf("Reconheceu token TKSoma\n"); */
 						return;
 					}
 				}
@@ -213,19 +213,19 @@ void getToken() {
 						lex[posl++] = '=';
 						lex[posl] = '\0';
 						proxC();
-						tk = TKMaiorIgual; /*printf("Reconheceu token TKMaiorIgual\n");*/
+						tk = TKMaiorIgual; /* printf("Reconheceu token TKMaiorIgual\n"); */
 						return;
 					} else {
 						if (c == '>') {
 							lex[posl++] = '>';
 							lex[posl] = '\0';
 							proxC();
-							tk = TKDeslocamentoDir; /*printf("Reconheceu token TKDeslocamentoDir\n");*/
+							tk = TKDeslocamentoDir; /* printf("Reconheceu token TKDeslocamentoDir\n"); */
 							return;
 						}
 						else {
 							lex[posl] = '\0';
-							tk = TKMaiorQue; /*printf("Reconheceu token TKMaiorQue\n");*/
+							tk = TKMaiorQue; /* printf("Reconheceu token TKMaiorQue\n"); */
 							return;
 						}
 					}
@@ -236,33 +236,33 @@ void getToken() {
 						lex[posl++] = '=';
 						lex[posl] = '\0';
 						proxC();
-						tk = TKMaiorIgual; /*printf("Reconheceu token TKMenorIgual\n");*/
+						tk = TKMaiorIgual; /* printf("Reconheceu token TKMenorIgual\n"); */
 						return;
 					} else {
 						if (c == '<') {
 							lex[posl++] = '<';
 							lex[posl] = '\0';
 							proxC();
-							tk = TKDeslocamentoDir; /*printf("Reconheceu token TKDeslocamentoEsq\n");*/
+							tk = TKDeslocamentoDir; /* printf("Reconheceu token TKDeslocamentoEsq\n"); */
 							return;
 						}
 						else {
 							lex[posl] = '\0';
-							tk = TKMaiorQue; /*printf("Reconheceu token TKMenorQue\n");*/
+							tk = TKMaiorQue; /* printf("Reconheceu token TKMenorQue\n"); */
 							return;
 						}
 					}
 				}
-				if (c == '*') { lex[posl]='\0'; proxC(); tk = TKProd; /*printf("Reconheceu token TKProd\n");*/ return; }
-				if (c == '(') { lex[posl]='\0'; proxC(); tk = TKAbreParenteses; /*printf("Reconheceu token TKAbrePar\n");*/ return; }
-				if (c == ')') { lex[posl]='\0'; proxC(); tk = TKFechaParenteses; /*printf("Reconheceu token FechaPar\n");*/ return; }
-				if (c == '&') { lex[posl]='\0'; proxC(); tk = TKAndBit; /*printf("Reconheceu token TKAndBit\n");*/ return; }
-				if (c == '{') { lex[posl]='\0'; proxC(); tk = TKAbreChaves; /*printf("Reconheceu token TKAbreChaves\n");*/ return; }
-				if (c == '}') { lex[posl]='\0'; proxC(); tk = TKFechaChaves; /*printf("Reconheceu token TKFechaChaves\n");*/ return; }
-				if (c == ',') { lex[posl]='\0'; proxC(); tk = TKVirgula; /*printf("Reconheceu token TKVirgula\n");*/ return; }
-				if (c == ';') { lex[posl]='\0'; proxC(); tk = TKPontoEVirgula; /*printf("Reconheceu token TKPontoEVirgula\n");*/ return; }
-				if (c == ':') { lex[posl]='\0'; proxC(); tk = TKDoisPontos; /*printf("Reconheceu token TKDoisPontos\n");*/ return; }
-				if (c == -1) { lex[posl]='\0'; proxC(); tk = TKFimArquivo; /*printf("Reconheceu token TKFimArquivo\n");*/ return; }
+				if (c == '*') { lex[posl]='\0'; proxC(); tk = TKProd; /* printf("Reconheceu token TKProd\n"); */ return; }
+				if (c == '(') { lex[posl]='\0'; proxC(); tk = TKAbreParenteses; /* printf("Reconheceu token TKAbrePar\n"); */ return; }
+				if (c == ')') { lex[posl]='\0'; proxC(); tk = TKFechaParenteses; /* printf("Reconheceu token FechaPar\n"); */ return; }
+				if (c == '&') { lex[posl]='\0'; proxC(); tk = TKAndBit; /* printf("Reconheceu token TKAndBit\n"); */ return; }
+				if (c == '{') { lex[posl]='\0'; proxC(); tk = TKAbreChaves; /* printf("Reconheceu token TKAbreChaves\n"); */ return; }
+				if (c == '}') { lex[posl]='\0'; proxC(); tk = TKFechaChaves; /* printf("Reconheceu token TKFechaChaves\n"); */ return; }
+				if (c == ',') { lex[posl]='\0'; proxC(); tk = TKVirgula; /* printf("Reconheceu token TKVirgula\n"); */ return; }
+				if (c == ';') { lex[posl]='\0'; proxC(); tk = TKPontoEVirgula; /* printf("Reconheceu token TKPontoEVirgula\n"); */ return; }
+				if (c == ':') { lex[posl]='\0'; proxC(); tk = TKDoisPontos; /* printf("Reconheceu token TKDoisPontos\n"); */ return; }
+				if (c == -1) { lex[posl]='\0'; proxC(); tk = TKFimArquivo; /* printf("Reconheceu token TKFimArquivo\n"); */ return; }
 				if (c == ' ' || c == '\n' || c == '\t' || c == '\r') { proxC(); posl--; break; }
 				if (c == '\0') { tk = -1; return; }
 				printf("\nErro lexico: caractere inesperado %c (%d) na linha %d e coluna %d\n", c, c, linha + 1, coluna);
@@ -276,11 +276,11 @@ void getToken() {
 				}
 				lex[--posl] = '\0';
 				tk = palavra_reservada(lex);
-				//printf("reconheceu token %s\n",lex);
+				// printf("reconheceu token %s\n",lex);
 				return;
-		} //switch
+		} // switch
 	} // while
-} // fun��o
+} // função
 
 int strlenInt(int n) {
 	int len = 1;
@@ -301,8 +301,8 @@ int main() {
 		return 0;
 	}
 
-	proxC(); // l� primeiro caracter do arquivo
-	getToken(); // l� primeiro token
+	proxC(); // lê primeiro caracter do arquivo
+	getToken(); // lê primeiro token
 	
 	if (tk != TKFimArquivo) {	
 		printf("%s%*.*s", "Token", 20 - strlen("Token"), 20 - strlen("Token"), " ");
