@@ -134,8 +134,8 @@ void proxC() {
 
 void getToken() {
 	int estado=0,
-    fim=0,
-    posl=0;
+	fim=0,
+	posl=0;
 	
 	while (!fim) {
 		/* printf("%s\n",exp1);
@@ -149,7 +149,7 @@ void getToken() {
 					estado = 1;
 					break;
 				}
-             	if (c == '=') {
+				if (c == '=') {
 					proxC();
 					if (c == '=') {
 						lex[posl++] = '=';
@@ -166,7 +166,7 @@ void getToken() {
 					}
 				}
 				if (c == '+') {
-			    	proxC();
+					proxC();
 					if (c == '+') {
 						lex[posl++] = '+';
 						lex[posl] = '\0';
@@ -180,7 +180,7 @@ void getToken() {
 					}
 				}
 				if (c == '-') {
-			    	proxC();
+					proxC();
 					if (c == '-') {
 						lex[posl++] = '-';
 						lex[posl] = '\0';
@@ -194,7 +194,7 @@ void getToken() {
 					}
 				}
 				if (c == '&') {
-			    	proxC();
+					proxC();
 					if (c == '&') {
 						lex[posl++] = '&';
 						lex[posl] = '\0';
@@ -208,7 +208,7 @@ void getToken() {
 					}
 				}
 				if (c == '>') {
-			    	proxC();
+					proxC();
 					if (c == '=') {
 						lex[posl++] = '=';
 						lex[posl] = '\0';
@@ -231,7 +231,7 @@ void getToken() {
 					}
 				}
 				if (c == '<') {
-			    	proxC();
+					proxC();
 					if (c == '=') {
 						lex[posl++] = '=';
 						lex[posl] = '\0';
