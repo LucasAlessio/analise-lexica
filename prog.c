@@ -1,8 +1,4 @@
 int main() {
-	
-}
-
-int main() {
 	<=
 	++ + -- -
 	
@@ -16,10 +12,28 @@ int main() {
 	_1teste
 	
 	==
-}
-
-int main() {
+	>=
+	/
+	+=
+	-=
+	[]
 	
+	switch() {
+		case:
+		case:
+			break;
+		default:
+			break;
+	}
+	
+	%
+	%=
+	|
+	^
+	^=
+	~
+	~=
+	&=
+	!
+	!=
 }
-
-void a;
